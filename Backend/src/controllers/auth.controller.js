@@ -3,9 +3,12 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const tokenBlacklistModel = require("../models/blacklist.model")
 
+const isProduction = process.env.NODE_ENV === "production"
+
 const cookieOptions = {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
     maxAge: 24 * 60 * 60 * 1000 // 1 day
 }
 
@@ -150,6 +153,9 @@ async function loginUserController(req, res) {
 async function logoutUserController(req, res) {
     try {
         const token = req.cookies.token
+            || (req.headers.authorization && req.headers.authorization.startsWith("Bearer ")
+                ? req.headers.authorization.split(" ")[1]
+                : null)
 
         if (token) {
             await tokenBlacklistModel.create({ token })
@@ -209,8 +215,7 @@ async function guestLoginController(req, res) {
         )
 
         res.cookie('token', token, {
-            httpOnly: true,
-            sameSite: 'lax',
+            ...cookieOptions,
             maxAge: 2 * 60 * 60 * 1000 // 2 hours
         })
 

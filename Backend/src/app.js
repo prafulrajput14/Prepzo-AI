@@ -4,6 +4,8 @@ const cors = require("cors")
 
 const app = express()
 
+app.set("trust proxy", 1)
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
@@ -11,7 +13,8 @@ app.use(cors({
         "http://localhost:5173",
         "https://prepzo-ai-five.vercel.app"
     ],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
 /* require all the routes here */
