@@ -9,6 +9,15 @@ const api = axios.create({
   withCredentials: true
 })
 
+// Attach token from localStorage to every request via Authorization header
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token")
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
 const validatePassword = (pw) => {
   if (pw.length < 8) return 'At least 8 characters'
   if (!/[A-Z]/.test(pw)) return 'Needs an uppercase letter'

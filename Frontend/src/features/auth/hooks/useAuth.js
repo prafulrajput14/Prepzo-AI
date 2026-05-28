@@ -55,7 +55,8 @@ export const useAuth = () => {
             const data = await logout()
             setUser(null)
         } catch (err) {
-
+            localStorage.removeItem("token")
+            setUser(null)
         } finally {
             setLoading(false)
         }
