@@ -17,6 +17,9 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
+/* Health check — lightweight endpoint for warm-up pings (no auth, no DB) */
+app.get("/api/health", (req, res) => res.json({ status: "ok" }))
+
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
 const interviewRouter = require("./routes/interview.routes")

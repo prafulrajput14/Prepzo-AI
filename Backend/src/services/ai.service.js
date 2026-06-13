@@ -1,7 +1,8 @@
 const { GoogleGenAI } = require("@google/genai")
 const { z } = require("zod")
 const { zodToJsonSchema } = require("zod-to-json-schema")
-const puppeteer = require("puppeteer")
+// NOTE: puppeteer is lazy-loaded inside generatePdfFromHtml() to avoid
+// adding 2-5s to cold start when PDF generation isn't needed
 
 const ai = new GoogleGenAI({
     apiKey: process.env.GOOGLE_GENAI_API_KEY
@@ -103,6 +104,8 @@ Job Description: ${jobDescription}`
 
 
 async function generatePdfFromHtml(htmlContent) {
+    // Lazy-load puppeteer only when actually needed for PDF generation
+    const puppeteer = require("puppeteer")
     const browser = await puppeteer.launch()
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })

@@ -1,35 +1,70 @@
 import { createBrowserRouter } from "react-router";
-import Login from "./features/auth/pages/Login";
-import Register from "./features/auth/pages/Register";
-import ForgotPassword from "./features/auth/pages/ForgotPassword";
+import { lazy, Suspense } from "react";
 import Protected from "./features/auth/components/Protected";
-import Home from "./features/interview/pages/Home";
-import Interview from "./features/interview/pages/Interview";
 
+// Lazy-load all page components for code splitting
+const Login = lazy(() => import("./features/auth/pages/Login"));
+const Register = lazy(() => import("./features/auth/pages/Register"));
+const ForgotPassword = lazy(() => import("./features/auth/pages/ForgotPassword"));
+const Home = lazy(() => import("./features/interview/pages/Home"));
+const Interview = lazy(() => import("./features/interview/pages/Interview"));
+const LandingPage = lazy(() => import("./features/landing/LandingPage"));
+
+// Loading fallback matching the app's dark theme
+const PageLoader = () => (
+    <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        background: '#0a0f1a',
+    }}>
+        <div style={{
+            width: '32px',
+            height: '32px',
+            border: '3px solid rgba(255,255,255,0.08)',
+            borderTopColor: '#ec4899',
+            borderRadius: '50%',
+            animation: 'spin 0.7s linear infinite',
+        }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+    </div>
+);
+
+// Wrap lazy components with Suspense
+const withSuspense = (Component) => (
+    <Suspense fallback={<PageLoader />}>
+        <Component />
+    </Suspense>
+);
 
 export const router = createBrowserRouter([
     {
+        path: "/landing",
+        element: withSuspense(LandingPage)
+    },
+    {
         path: "/login",
-        element: <Login />
+        element: withSuspense(Login)
     },
     {
         path: "/register",
-        element: <Register />
+        element: withSuspense(Register)
     },
     {
         path: "/forgot-password",
-        element: <ForgotPassword />
+        element: withSuspense(ForgotPassword)
     },
     {
         path: "/",
-        element: <Protected><Home /></Protected>
+        element: <Protected>{withSuspense(Home)}</Protected>
     },
     {
         path:"/interview/guest",
-        element: <Protected><Interview /></Protected>
+        element: <Protected>{withSuspense(Interview)}</Protected>
     },
     {
         path:"/interview/:interviewId",
-        element: <Protected><Interview /></Protected>
+        element: <Protected>{withSuspense(Interview)}</Protected>
     }
 ])
