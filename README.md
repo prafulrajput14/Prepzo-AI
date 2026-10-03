@@ -1,228 +1,353 @@
 # 🚀 Prepzo AI
 
-> AI-Powered Interview Preparation Platform that helps job seekers analyze resumes, identify skill gaps, generate personalized interview strategies, and improve interview readiness for their target roles.
+**Prepzo AI** is an AI-powered interview preparation platform that helps candidates analyze their resumes against target job descriptions, identify skill gaps, and generate personalized interview preparation strategies.
 
-🌐 **Live Demo:** https://prepzo-ai-five.vercel.app/login
+**Live Demo:** https://prepzo-ai-five.vercel.app/login
 
 ---
 
 ## 📌 Overview
 
-Prepzo AI is an intelligent career preparation platform designed to help candidates prepare effectively for technical and behavioral interviews using AI-driven insights.
+Prepzo AI is a full-stack AI application designed to help candidates prepare for software engineering interviews.
 
-Users can upload their resume or provide a professional profile along with a target job description. The platform analyzes candidate-job compatibility and generates personalized preparation strategies to maximize interview success.
+The platform analyzes a candidate's **resume/profile** against a **target job description** and generates personalized insights, including:
+
+- Candidate-job match analysis
+- Skill gap identification
+- Resume improvement suggestions
+- Technical and behavioral interview questions
+- Personalized preparation roadmap
+- Role-specific interview strategies
+
+The application combines a **React frontend**, **Node.js/Express backend**, **MongoDB database**, **JWT authentication**, and **AI/LLM integration** into a complete SaaS-style application.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### 🤖 AI Resume Analysis
+### 🤖 AI-Powered Resume Analysis
 
-* Resume parsing and evaluation
-* ATS-focused recommendations
-* Candidate profile extraction
-* Experience and skill assessment
+- Analyzes candidate resume/profile information
+- Identifies relevant skills and experience
+- Evaluates alignment with target job requirements
+- Provides actionable resume improvement suggestions
 
-### 🎯 Personalized Interview Strategy
+### 🎯 Candidate-Job Matching
 
-* Role-specific preparation roadmap
-* Interview readiness assessment
-* Structured learning plan
-* AI-generated preparation workflow
+- Compares candidate skills against job requirements
+- Generates a job-match score
+- Identifies strengths and skill gaps
+- Highlights areas requiring improvement
 
 ### 📊 Skill Gap Analysis
 
-* Compare candidate profile against target role
-* Identify missing skills
-* Prioritize improvement areas
-* Generate learning recommendations
+- Identifies missing or under-represented skills
+- Prioritizes important areas for improvement
+- Provides targeted preparation recommendations
 
-### 💼 Candidate-Job Match Scoring
+### 🧠 AI Interview Preparation
 
-* Candidate-job compatibility analysis
-* Profile alignment insights
-* Strength and weakness breakdown
-* Readiness estimation
+Generates role-specific:
 
-### 🧠 AI Interview Question Generator
+- Technical interview questions
+- Behavioral interview questions
+- Preparation strategies
+- Personalized learning recommendations
 
-* Technical interview questions
-* Behavioral interview questions
-* Role-specific preparation content
-* Personalized practice guidance
+### 🗺️ Personalized Preparation Roadmap
 
-### 🔐 Authentication & Security
+- Creates a structured preparation plan
+- Prioritizes topics based on identified skill gaps
+- Helps candidates focus on role-specific requirements
 
-* JWT-based authentication
-* Protected routes
-* Secure user sessions
-* Guest user access support
+### 🔐 Authentication & Authorization
 
-### 🎨 Modern SaaS Dashboard
+- JWT-based authentication
+- Protected routes
+- Role-based access control
+- Secure session handling
+- Guest access support
 
-* Responsive UI
-* Interactive user experience
-* Mobile-friendly design
-* Professional dashboard layout
+### 🎨 Responsive Dashboard
 
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-* React.js
-* Vite
-* Tailwind CSS
-* Framer Motion
-* Axios
-
-### Backend
-
-* Node.js
-* Express.js
-
-### Database
-
-* MongoDB Atlas
-* Mongoose
-
-### Authentication
-
-* JWT Authentication
-* Role-Based Access Control
-
-### AI Integration
-
-* Large Language Models (LLMs)
-* Prompt Engineering
-* Resume Analysis Pipeline
-
-### Deployment
-
-* Vercel
-* Render
-* MongoDB Atlas
+- Modern React-based interface
+- Responsive design
+- Interactive preparation dashboard
+- Smooth UI animations
+- Mobile-friendly experience
 
 ---
 
-## 🏗️ System Workflow
+## 🏗️ System Architecture
 
 ```text
-Resume / User Profile
-          │
-          ▼
+                         ┌─────────────────────┐
+                         │        User         │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   React Frontend    │
+                         │ Vite + Tailwind CSS │
+                         └──────────┬──────────┘
+                                    │
+                               REST APIs
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Node.js + Express   │
+                         │     Backend API     │
+                         └───────┬───────┬─────┘
+                                 │       │
+                    ┌────────────┘       └────────────┐
+                    ▼                                 ▼
+          ┌──────────────────┐              ┌──────────────────┐
+          │     MongoDB      │              │   AI / LLM API   │
+          │    + Mongoose    │              │    Processing    │
+          └──────────────────┘              └────────┬─────────┘
+                                                     │
+                                                     ▼
+                                          ┌────────────────────┐
+                                          │   AI Results       │
+                                          │ • Match Analysis   │
+                                          │ • Skill Gaps       │
+                                          │ • Questions        │
+                                          │ • Roadmap          │
+                                          └────────────────────┘
+```
+
+---
+
+## 🔄 Application Workflow
+
+```text
+Resume / Candidate Profile
+            │
+            ▼
 Target Job Description
-          │
-          ▼
-AI Profile Analysis
-          │
-          ▼
+            │
+            ▼
+Candidate Profile Analysis
+            │
+            ▼
+Job Requirement Analysis
+            │
+            ▼
 Skill Gap Detection
-          │
-          ▼
-Match Score Calculation
-          │
-          ▼
-Interview Strategy Generation
-          │
-          ▼
-Technical & Behavioral Questions
-          │
-          ▼
+            │
+            ▼
+Candidate-Job Match Analysis
+            │
+            ▼
+AI Interview Strategy
+            │
+       ┌────┴────┐
+       ▼         ▼
+Technical    Behavioral
+Questions    Questions
+       │         │
+       └────┬────┘
+            ▼
 Personalized Preparation Roadmap
 ```
 
-## 🚀 Installation
+---
 
-### Clone Repository
+## 🛠️ Technology Stack
+
+### Frontend
+
+- React.js
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Axios
+
+### Backend
+
+- Node.js
+- Express.js
+- REST APIs
+
+### Database
+
+- MongoDB
+- Mongoose
+
+### Authentication & Security
+
+- JSON Web Tokens (JWT)
+- Role-Based Access Control (RBAC)
+- Protected API routes
+- Environment-based secret management
+
+### AI
+
+- Large Language Models (LLMs)
+- Prompt Engineering
+- AI-powered resume analysis
+- AI-generated interview preparation
+
+### Deployment
+
+- Vercel — Frontend
+- Render — Backend
+- MongoDB Atlas — Database
+
+---
+
+## 📂 Project Structure
+
+```text
+Prepzo-AI/
+│
+├── Backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── services/
+│   ├── package.json
+│   └── ...
+│
+├── Frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/prafulrajput14/Prepzo-AI.git
+cd Prepzo-AI
 ```
 
-### Install Dependencies
+### 2. Backend Setup
 
 ```bash
+cd Backend
 npm install
 ```
 
-### Run Frontend
+Create a `.env` file inside the `Backend` directory.
 
-```bash
-npm run dev
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+AI_API_KEY=your_ai_api_key
 ```
 
-### Run Backend
+Start the backend:
 
 ```bash
 npm start
 ```
 
----
+### 3. Frontend Setup
 
-## 🎯 Key Highlights
+Open a new terminal:
 
-* AI-Powered Interview Preparation Platform
-* Resume-Based Career Guidance
-* Personalized Interview Strategy Generation
-* Skill Gap Detection & Analysis
-* Candidate-Job Compatibility Scoring
-* Technical & Behavioral Question Generation
-* JWT Authentication & Authorization
-* Full-Stack MERN Architecture
-* Modern SaaS Dashboard Experience
+```bash
+cd Frontend
+npm install
+npm run dev
+```
 
----
+The frontend will start using the Vite development server.
 
-## 📚 Learning Outcomes
-
-This project strengthened practical knowledge in:
-
-* Full-Stack Web Development
-* REST API Design
-* Authentication & Authorization
-* AI Integration Workflows
-* Prompt Engineering
-* MongoDB Data Modeling
-* Frontend State Management
-* Secure Coding Practices
-* Cloud Deployment
+> **Note:** Environment variable names should match the configuration used by the application. Never commit `.env` files, API keys, database credentials, or other secrets to the repository.
 
 ---
 
-## 👨‍💻 Developer
+## 🔑 Environment Configuration
 
-### Praful Kumar
+The application requires environment-specific configuration for:
 
-Final Year Computer Science Engineering Student at GLA University, Mathura.
+- MongoDB connection
+- JWT authentication
+- AI/LLM API integration
+- Backend API configuration
 
-Passionate about:
-
-* Full-Stack Development
-* Artificial Intelligence Applications
-* Software Engineering
-* Problem Solving
-* Scalable Web Systems
+Sensitive credentials must be stored using environment variables and must not be committed to GitHub.
 
 ---
 
-## 🌐 Connect With Me
+## 🔐 Security
 
-**Portfolio:** https://prafulrajput14.github.io/My-Portfolio/
+The application incorporates several security practices:
 
-**LinkedIn:** https://www.linkedin.com/in/praful-kumar1401/
-
-**GitHub:** https://github.com/prafulrajput14
-
-**LeetCode:** https://leetcode.com/u/prafulrajput_14/
-
-**Email:** [prafulkumar1401@gmail.com](mailto:prafulkumar1401@gmail.com)
+- JWT-based authentication
+- Protected routes and APIs
+- Role-based authorization
+- Environment-based secret management
+- Input validation
+- Controlled API access
+- Separation of frontend and backend responsibilities
 
 ---
 
-## ⭐ Support
+## 🎯 Core Functional Modules
 
-If you found this project useful, please consider giving the repository a star.
+| Module | Description |
+| :--- | :--- |
+| **Authentication** | User registration, login, and protected route access |
+| **Resume Analysis** | Extracts and analyzes candidate profile and core competencies |
+| **Job Analysis** | Parses and processes target role requirements |
+| **Match Analysis** | Compares candidate profile against target job criteria |
+| **Skill Gap Analysis** | Identifies missing or under-represented technical skills |
+| **Interview Generator** | Generates role-specific technical and behavioral questions |
+| **Preparation Strategy** | Creates a personalized learning and preparation roadmap |
+| **Dashboard** | Interactive analytics view of readiness and preparation results |
 
-A ⭐ helps support future improvements and increases project visibility.
+---
+
+## 💡 Engineering Concepts Demonstrated
+
+This project demonstrates practical implementation of:
+
+- Full-stack MERN development
+- RESTful API design
+- Client-server architecture
+- JWT authentication
+- Role-based authorization
+- MongoDB data modeling
+- API integration
+- AI/LLM integration
+- Prompt engineering
+- Resume and job-description analysis
+- Frontend state management
+- Responsive UI development
+- Cloud deployment
+- Secure application development
+
+---
+
+## 🌐 Live Application
+
+**Prepzo AI:**  
+https://prepzo-ai-five.vercel.app/login
+
+---
+
+## 📋 Project Information
+
+| Property | Details |
+| :--- | :--- |
+| **Project** | Prepzo AI |
+| **Domain** | Artificial Intelligence / Full-Stack Development |
+| **Architecture** | MERN + AI |
+| **Application Type** | AI-powered SaaS Platform |
+| **Frontend** | React.js |
+| **Backend** | Node.js + Express.js |
+| **Database** | MongoDB |
+| **Authentication** | JWT |
