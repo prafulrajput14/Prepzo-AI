@@ -1,6 +1,6 @@
 # 🚀 Prepzo AI
 
-**Prepzo AI** is an AI-powered interview preparation platform that helps candidates analyze their resumes against target job descriptions, identify skill gaps, and generate personalized interview preparation strategies.
+**Prepzo AI** is an AI-powered interview preparation platform that analyzes a candidate's resume against a target job description, identifies skill gaps, and generates personalized interview preparation strategies.
 
 **Live Demo:** https://prepzo-ai-five.vercel.app/login
 
@@ -19,7 +19,7 @@ The platform analyzes a candidate's **resume/profile** against a **target job de
 - Personalized preparation roadmap
 - Role-specific interview strategies
 
-The application combines a **React frontend**, **Node.js/Express backend**, **MongoDB database**, **JWT authentication**, and **AI/LLM integration** into a complete SaaS-style application.
+The application combines a **React frontend**, **Node.js/Express backend**, **MongoDB database**, **JWT-based authentication**, and **AI/LLM integration** into a complete full-stack application.
 
 ---
 
@@ -108,7 +108,7 @@ Generates role-specific:
                                                      │
                                                      ▼
                                           ┌────────────────────┐
-                                          │   AI Results       │
+                                          │     AI Results     │
                                           │ • Match Analysis   │
                                           │ • Skill Gaps       │
                                           │ • Questions        │
@@ -238,7 +238,7 @@ cd Backend
 npm install
 ```
 
-Create a `.env` file inside the `Backend` directory.
+Create a `.env` file inside the `Backend` directory and configure the required environment variables.
 
 ```env
 PORT=5000
@@ -278,7 +278,7 @@ The application requires environment-specific configuration for:
 - AI/LLM API integration
 - Backend API configuration
 
-Sensitive credentials must be stored using environment variables and must not be committed to GitHub.
+Sensitive credentials must be stored using environment variables and must never be committed to GitHub.
 
 ---
 
@@ -332,13 +332,6 @@ This project demonstrates practical implementation of:
 
 ---
 
-## 🌐 Live Application
-
-**Prepzo AI:**  
-https://prepzo-ai-five.vercel.app/login
-
----
-
 ## 📋 Project Information
 
 | Property | Details |
@@ -346,7 +339,7 @@ https://prepzo-ai-five.vercel.app/login
 | **Project** | Prepzo AI |
 | **Domain** | Artificial Intelligence / Full-Stack Development |
 | **Architecture** | MERN + AI |
-| **Application Type** | AI-powered SaaS Platform |
+| **Application Type** | AI-powered Full-Stack Platform |
 | **Frontend** | React.js |
 | **Backend** | Node.js + Express.js |
 | **Database** | MongoDB |
